@@ -706,6 +706,22 @@
     return obj;
   };
 
+  // Takes an array of keys and an array of values and zips them together into an object (similar to _.zip).
+  // If the array lengths do not match, extra 'values' will be ignored and missing 'values' will
+  // be set as undefined on the returned object.  If a single key is passed, an object is returned with one key set
+  // to 'values'.
+  zipObject: function(keys, values) {
+    var obj = {};
+    if (!_.isArray(keys)) {
+      obj[keys] = values;
+      return obj;
+    }
+    for (var i = 0, l = keys.length; i < l; i++) {
+      obj[keys[i]] = values[i];
+    }
+    return obj;
+  },
+
   // Internal recursive comparison function for `isEqual`.
   function eq(a, b, stack) {
     // Identical objects are equal. `0 === -0`, but they aren't identical.
