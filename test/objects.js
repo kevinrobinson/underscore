@@ -81,6 +81,16 @@ $(document).ready(function() {
     equal(_.clone(null), null, 'non objects should not be changed by clone');
   });
 
+
+  test("objects: zipObject", function() {
+    var result;
+    result = _.zipObject(['name', 'age'], ['Kevin', 31]);
+    ok(_.isEqual(result, { name: 'Kevin', age: 31 }), 'can zip two arrays into an object');
+
+    result = _.zipObject('versions', [1,3,4]);
+    ok(_.isEqual(result, { versions: [1,3,4] }), 'can zip single key and value into an object');
+  });
+
   test("objects: isEqual", function() {
     function First() {
       this.value = 1;
